@@ -34,19 +34,17 @@ class SimpleFont:
                 else:
                     bitmap += line.split('\n')
 #-------------------------------------------------------------------------------
-    # Render string given the max height above the baseline.  Returns rectangular
+    # Render string given the max height above the baseline. Returns rectangular
     # array, starting from top-left corner.
     # Opts: 
-    #   ignore_shift_h - whether to ignore shift_h read from the font.
-    #   fixed_width - make the width exactly this, cropping or pannin the text to
-    #                 it.
+    #  ignore_shift_h - whether to ignore shift_h read from the font.
+    #  fixed_width - make width exactly this, cropping or pannin the text to it.
     def render(self, string, height, opts = {}):
-        # We'll store, temporarily, bits in buf hash, where hash[[i,j]] is a bit i
-        # points up, and j points right from the start of the baseline. 
+        # We'll store, temporarily, bits in buf hash where hash[[i,j]] is a bit.
+        # i points up, and j points right from the start of the baseline. 
         buf = {}
         width = 0
-        # Technically, it should be String#split, but we don't support chars >127
-        # anyway.
+
         for x in string:
             c_code = str(ord(x))
             glyph = self.glyphs[c_code]
@@ -63,15 +61,18 @@ class SimpleFont:
                     buf[(bit_row, bit_col)] = bit
                     if bit_row < 0:
                         print "negative value for letter %s" % c_code
-                    # Compute the new width.
+            # Compute the new width.
             if glyph["bitmap"][0]:
                 width += len(glyph["bitmap"][0]) 
             else:
                 width += 0
             # Insert interval between letters.
             width += 1 + add_shift_h
+
         # now render the final array
-        result = numpy.zeros(height * opts["fixed_width"], dtype=int).reshape((height, opts["fixed_width"]))
+        result = numpy.zeros(height * opts["fixed_width"], \
+                dtype=int).reshape((height, opts["fixed_width"]))
+
         for xy in buf:
             bit = buf[xy]
             row = (height - 1) - xy[0]
@@ -107,9 +108,9 @@ class SimpleFont:
 
         return new_result
 #-------------------------------------------------------------------------------
-    # Same as render, but renders several lines (it is an array), and places them
+    # Same as render, but renders several lines (its an array), and places them
     # below each other.  Accepts the same options as "render," and also these:
-    #   distance: distance between lines in pixels.
+    # distance: distance between lines in pixels.
     def render_multiline(self, lines, line_height, opts = {}):
         line_pics = [self.render(line, line_height, opts) for line in lines]
         canvas = []
