@@ -1,0 +1,11 @@
+*.log
+*.pot
+*.pyc
+vim*
+*.bak
+bin
+include
+lib
+local
+env_settings.py
+muni-led-sign
