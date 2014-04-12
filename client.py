@@ -13,7 +13,6 @@ class SignClient:
                     LEDSign.SCREEN_HEIGHT / 2,
                     {
                         "ignore_shift_h" : True,
-                        "distance" : 0,
                         "fixed_width" : LEDSign.SCREEN_WIDTH
                         }
                     )
