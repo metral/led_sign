@@ -10,8 +10,7 @@ class SignClient:
     def send_text_to_sign(self, lines):
         font = sign_font(self.glyphs_path)
 
-        text_for_sign = Array().zero_one(
-                font.render_multiline(
+        matrix = font.render_multiline(
                     lines,
                     LEDSign.SCREEN_HEIGHT / 2,
                     {
@@ -19,10 +18,11 @@ class SignClient:
                         "fixed_width" : LEDSign.SCREEN_WIDTH
                         }
                     )
-                )
 
-        if not text_for_sign:
+        if not matrix:
             return False
+
+        text_for_sign = Array().zero_one(matrix)
 
         # View matrix rendering of text
         #print text_for_sign
