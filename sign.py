@@ -1,7 +1,9 @@
 #===============================================================================
 from subprocess import Popen, PIPE, STDOUT
 #-------------------------------------------------------------------------------
-class LEDSign(lowlevel_path):
+class LEDSign():
+#-------------------------------------------------------------------------------
+    def __init__(lowlevel_path):
     SCRIPT = '/'.join([lowlevel_path, 'lowlevel.pl'])
 
     # Sign dimensions (to aid in text formatting).
