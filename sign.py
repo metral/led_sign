@@ -2,14 +2,14 @@
 from subprocess import Popen, PIPE, STDOUT
 #-------------------------------------------------------------------------------
 class LEDSign:
-    SCRIPT = 'lowlevel.pl'
+    SCRIPT = '/root/scores/led_sign/lowlevel.pl'
 
     # Sign dimensions (to aid in text formatting).
     SCREEN_WIDTH = 96
     SCREEN_HEIGHT = 16
 #-------------------------------------------------------------------------------
     def pic(self, data):
-        draw = ['/usr/bin/perl', self.SCRIPT, '--type=pic']
+        draw = ['ssh', 'root@172.16.1.152', '/usr/bin/perl', self.SCRIPT, '--type=pic']
         p = Popen(draw, stdout=PIPE, stdin=PIPE, stderr=STDOUT)
         p.communicate(input=data)[0]
 #-------------------------------------------------------------------------------
