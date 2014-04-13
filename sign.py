@@ -6,7 +6,7 @@ class LEDSign():
     SCREEN_WIDTH = 96
     SCREEN_HEIGHT = 16
 #-------------------------------------------------------------------------------
-    def __init__(lowlevel_path):
+    def __init__(self, lowlevel_path):
         self.SCRIPT = '/'.join([lowlevel_path, 'lowlevel.pl'])
 #-------------------------------------------------------------------------------
     def pic(self, data):
