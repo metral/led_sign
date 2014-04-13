@@ -40,6 +40,7 @@ class SimpleFont:
     #  ignore_shift_h - whether to ignore shift_h read from the font.
     #  fixed_width - make width exactly this, cropping or pannin the text to it.
     def render(self, string, height, opts = {}):
+
         # We'll store, temporarily, bits in buf hash where hash[[i,j]] is a bit.
         # i points up, and j points right from the start of the baseline. 
         buf = {}
@@ -68,6 +69,10 @@ class SimpleFont:
                 width += 0
             # Insert interval between letters.
             width += 1 + add_shift_h
+
+        # Return error if pic is bigger than allowed for
+        if width > opts["fixed_width"]:
+            return None
 
         # now render the final array
         result = numpy.zeros(height * opts["fixed_width"], \

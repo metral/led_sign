@@ -10,6 +10,9 @@ class SignClient:
     def send_text_to_sign(self, lines):
         font = sign_font(self.glyphs_path)
 
+        if not font:
+            return False
+
         text_for_sign = Array().zero_one(
                 font.render_multiline(
                     lines,
@@ -26,4 +29,5 @@ class SignClient:
 
         # Send text to led sign
         LEDSign(self.lowlevel_path).pic(text_for_sign)
+        return True
 #===============================================================================
