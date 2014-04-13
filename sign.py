@@ -1,8 +1,8 @@
 #===============================================================================
 from subprocess import Popen, PIPE, STDOUT
 #-------------------------------------------------------------------------------
-class LEDSign:
-    SCRIPT = 'lowlevel.pl'
+class LEDSign(lowlevel_path):
+    SCRIPT = '/'.join([lowlevel_path, 'lowlevel.pl'])
 
     # Sign dimensions (to aid in text formatting).
     SCREEN_WIDTH = 96
