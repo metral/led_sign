@@ -2,13 +2,12 @@
 from subprocess import Popen, PIPE, STDOUT
 #-------------------------------------------------------------------------------
 class LEDSign():
+    # Sign dimensions (to aid in text formatting).
+    SCREEN_WIDTH = 96
+    SCREEN_HEIGHT = 16
 #-------------------------------------------------------------------------------
     def __init__(lowlevel_path):
         self.SCRIPT = '/'.join([lowlevel_path, 'lowlevel.pl'])
-
-        # Sign dimensions (to aid in text formatting).
-        self.SCREEN_WIDTH = 96
-        self.SCREEN_HEIGHT = 16
 #-------------------------------------------------------------------------------
     def pic(self, data):
         draw = ['/usr/bin/perl', self.SCRIPT, '--type=pic']
