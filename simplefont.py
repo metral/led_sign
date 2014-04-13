@@ -120,6 +120,8 @@ class SimpleFont:
         line_pics = [self.render(line, line_height, opts) for line in lines]
         canvas = []
         for line in line_pics:
+            if not line:
+                return None
             canvas += line
         return canvas
 #-------------------------------------------------------------------------------

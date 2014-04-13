@@ -10,9 +10,6 @@ class SignClient:
     def send_text_to_sign(self, lines):
         font = sign_font(self.glyphs_path)
 
-        if not font:
-            return False
-
         text_for_sign = Array().zero_one(
                 font.render_multiline(
                     lines,
@@ -23,6 +20,9 @@ class SignClient:
                         }
                     )
                 )
+
+        if not text_for_sign:
+            return False
 
         # View matrix rendering of text
         #print text_for_sign
