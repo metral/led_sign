@@ -119,12 +119,17 @@ class SimpleFont:
         return canvas
 #-------------------------------------------------------------------------------
 # Returns the default, most useful instance of the font used in signs.
-def sign_font():
-    sf = SimpleFont(open('7x7.simpleglyphs').readlines())
+def sign_font(glyphs_path):
+    sf = SimpleFont(\
+            open('/'.join([glyphs_path,'7x7.simpleglyphs'])).readlines())
+
     # Load amendments to the letters I don't like.
-    sf.load_glyphs(open('amends.simpleglyphs').readlines())
+    sf.load_glyphs(\
+            open('/'.join([glyphs_path,'amends.simpleglyphs'])).readlines())
+
     # Load local, application-specific glyphs.
-    sf.load_glyphs(open('specific.simpleglyphs').readlines())
+    sf.load_glyphs(\
+            open('/'.join([glyphs_path,'specific.simpleglyphs'])).readlines())
 
     return sf
 #-------------------------------------------------------------------------------
