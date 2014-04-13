@@ -25,5 +25,5 @@ class SignClient:
         #print text_for_sign
 
         # Send text to led sign
-        LEDSign(lowlevel_path).pic(text_for_sign)
+        LEDSign(self.lowlevel_path).pic(text_for_sign)
 #===============================================================================
