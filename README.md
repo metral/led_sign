@@ -6,7 +6,7 @@ LED Sign: http://www.brightledsigns.com/products/4_x16_LED_Mini_Desk_Sign-12972-
 
 ## Usage
 
-* Entry point is client.py
+* Entry point is __client.py__
 * Quick bootstrap script to test LED sign: `python test.py`
   * Assumes LED sign is located at /dev/ttyUSB0 (edit in lowlevel.pl, if different)
 
